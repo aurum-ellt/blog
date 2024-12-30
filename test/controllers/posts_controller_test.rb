@@ -6,11 +6,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
   end
 
-  test "should get index" do
-    get posts_url
-    assert_response :success
-  end
-
   test "should get new" do
     get new_post_url
     assert_response :success
@@ -26,11 +21,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Interdum iaculis etiam efficitur etiam est ligula euismod.", post.body.to_plain_text
 
     assert_redirected_to post_url(Post.last)
-  end
-
-  test "should show post" do
-    get post_url(@post)
-    assert_response :success
   end
 
   test "should get edit" do

@@ -17,10 +17,14 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
 
   resource :user, only: %i[ edit update destroy ]
-  resources :posts
+  resources :posts, expect: %i[ index show ]
 
   scope module: :posts do
     resources :drafts, only: :index
     resources :archives, only: :index
+  end
+
+  resources :authors, path: "", param: :slug, module: :authors, only: [] do
+    resources :posts, path: "", param: :slug, only: %i[ index show ]
   end
 end
