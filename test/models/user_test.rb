@@ -1,7 +1,17 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @user = users(:one)
+  end
+
+  test "should not save user without email address" do
+    @user.email_address = nil
+    assert_not @user.save
+  end
+
+  test "should not save user if email address already exists" do
+    duplicate_user = User.new(email_address: @user.email_address)
+    assert_not duplicate_user.save
+  end
 end
