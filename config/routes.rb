@@ -18,4 +18,9 @@ Rails.application.routes.draw do
 
   resource :user, only: %i[ edit update destroy ]
   resources :posts
+
+  scope module: :posts do
+    resources :drafts, only: :index
+    resources :archives, only: :index
+  end
 end
