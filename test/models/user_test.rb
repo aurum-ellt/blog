@@ -14,4 +14,9 @@ class UserTest < ActiveSupport::TestCase
     duplicate_user = User.new(email_address: @user.email_address)
     assert_not duplicate_user.save
   end
+
+  test "should not save user if password length less than 8" do
+    @user.password_digest = BCrypt::Password.create("passwor")
+    assert_not @user.save
+  end
 end
