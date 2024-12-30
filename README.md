@@ -1,24 +1,61 @@
-# README
+# Welcome to Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What's Blog?
 
-Things you may want to cover:
+A modest blogging tool.
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+1. Start the web server:
 
-* Configuration
+    ```bash
+    $ bin/dev
+    ```
 
-* Database creation
+2. Scan for security vulnerabilities in Ruby dependencies
 
-* Database initialization
+    ```bash
+    $ bin/brakeman --no-pager
+    ```
 
-* How to run the test suite
+3. Scan for security vulnerabilities in JavaScript dependencies
 
-* Services (job queues, cache servers, search engines, etc.)
+    ```bash
+    $ bin/importmap audit
+    ```
 
-* Deployment instructions
+4. Lint code for consistent style:
 
-* ...
+    ```bash
+    $ bin/rubocop
+    ```
+
+5. Run tests:
+
+    ```bash
+    $ bin/rails db:test:prepare test test:system
+    ```
+
+## Managing Secrets
+
+1. Edit credentials:
+
+    ```bash
+    $ VISUAL="code --wait" bin/rails credentials:edit
+    ```
+
+## Remote debugging
+
+1. Connect to the debuggee:
+
+    ```bash
+    $ rdbg -A
+    ```
+
+## Tips
+
+1. Load fixtures into the current environment's database:
+
+    ```bash
+    $ bin/rails db:fixtures:load 
+    ```
