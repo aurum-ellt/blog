@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
 
+  resource :user, only: %i[ edit update destroy ]
   resources :posts
 end

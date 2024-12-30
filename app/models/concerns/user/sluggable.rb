@@ -1,0 +1,12 @@
+module User::Sluggable
+  extend ActiveSupport::Concern
+
+  included do
+    before_update :set_slug, if: -> { slug.blank? }
+  end
+
+  private
+    def set_slug
+      self.slug = "#{pseudo.parameterize}-#{SecureRandom.hex(2)}"
+    end
+end

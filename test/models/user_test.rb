@@ -19,4 +19,14 @@ class UserTest < ActiveSupport::TestCase
     @user.password_digest = BCrypt::Password.create("passwor")
     assert_not @user.save
   end
+
+  test "should not update user without pseudo" do
+    @user.pseudo = nil
+    assert_not @user.save
+  end
+
+  test "should not save user if pseudo length more than 34" do
+    @user.pseudo = "Lorem ipsum odor amet, consectetuer adipiscing elit"
+    assert_not @user.save
+  end
 end
