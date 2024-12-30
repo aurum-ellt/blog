@@ -14,8 +14,12 @@
       <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="my-5">
-      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    <div class="relative my-5" data-controller="password" data-password-hidden-class="hidden">
+      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full", data: { password_target: "input" } %>
+      <button type="button" class="absolute inset-y-0 right-0 me-4 sepia cursor-pointer" data-action="click->password#toggleVisibility">
+        <%= image_tag "eye.svg", size: 24, data: { password_target: "icon" } %>
+        <%= image_tag "eye-slash.svg", class: "hidden", size: 24, data: { password_target: "icon" } %>
+      </button>
     </div>
 
     <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
