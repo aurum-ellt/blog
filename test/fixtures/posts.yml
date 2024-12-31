@@ -23,3 +23,11 @@ three:
   status: 2
   broadcasted: false
   user: one
+
+four:
+  slug: interdum-iaculis-draft
+  title: Interdum iaculis
+  body: Interdum iaculis etiam efficitur etiam est ligula euismod.
+  status: 0
+  broadcasted: false
+  user: two

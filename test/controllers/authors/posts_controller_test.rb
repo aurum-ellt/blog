@@ -1,17 +1,32 @@
 require "test_helper"
 
 class Authors::PostsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @post = posts(:one)
-  end
-
   test "should get index" do
-    get author_posts_url(@post.user.slug)
+    user = users(:one)
+    get author_posts_url(user.slug)
     assert_response :success
   end
 
-  test "should show post" do
-    get author_post_url(@post.user.slug, @post.slug)
+  test "should show published post" do
+    post = posts(:two)
+
+    get author_post_url(post.user.slug, post.slug)
     assert_response :success
+  end
+
+  test "should show post for authorized user" do
+    post = posts(:one)
+    sign_in users(:one)
+
+    get author_post_url(post.user.slug, post.slug)
+    assert_response :success
+  end
+
+  test "should forbid show for unauthorized user when not published" do
+    post = posts(:four)
+    sign_in users(:one)
+
+    get author_post_url(post.user.slug, post.slug)
+    assert_response :forbidden
   end
 end

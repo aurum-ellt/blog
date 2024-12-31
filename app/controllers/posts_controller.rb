@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ edit update destroy ]
+  before_action -> { ensure_permissions_for @post }, only: %i[ edit update destroy ]
 
   def new
     @post = Post.new

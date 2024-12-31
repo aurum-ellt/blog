@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  include Sluggable
+  include Availability, Sluggable
 
   enum :status, %i[ draft published archived ], default: :draft, validate: true
   has_rich_text :body

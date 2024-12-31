@@ -7,7 +7,8 @@ class Authors::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(slug: params.expect(:slug))
+    @post = @author.posts.find_by(slug: params.expect(:slug))
+    head :forbidden unless @post.published? || (authenticated? && @post.user == Current.user)
   end
 
   private
