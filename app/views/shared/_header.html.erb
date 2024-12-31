@@ -1,0 +1,11 @@
+<header class="bg-white">
+  <nav class="mx-auto max-w-7xl flex items-center justify-between p-4" aria-label="Global">
+    <div class="flex lg:flex-1">
+      <%= link_to root_path do %>
+        <span class="sr-only">Blog</span>
+        <%= image_tag "chat-bubble-bottom-center-text.svg", width: 24, height: 24, class: "h-8 w-auto", alt: "logo" %>
+      <% end %>
+    </div>
+    <%= button_to "Sign out", Current.session, method: :delete, class: "text-base text-gray-900 font-semibold" %>
+  </nav>
+</header>
