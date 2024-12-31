@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     resources :archives, only: :index
   end
 
-  resources :authors, path: "", param: :slug, module: :authors, only: [] do
-    resources :posts, path: "", param: :slug, only: %i[ index show ]
-  end
+  get "/:author_slug", to: "posts#index", as: :author_posts
+  get "/:author_slug/:slug", to: "posts#show", as: :slugged_post
 end

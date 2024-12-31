@@ -5,6 +5,34 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
   end
 
+  test "should get index" do
+    user = users(:one)
+
+    get author_posts_url(user.slug)
+    assert_response :success
+  end
+
+  test "should show published post" do
+    post = posts(:two)
+
+    get slugged_post_url(post.user.slug, post.slug)
+    assert_response :success
+  end
+
+  test "should show post for authorized user" do
+    post = posts(:one)
+
+    get slugged_post_url(post.user.slug, post.slug)
+    assert_response :success
+  end
+
+  test "should forbid show for unauthorized user when not published" do
+    post = posts(:four)
+
+    get slugged_post_url(post.user.slug, post.slug)
+    assert_response :forbidden
+  end
+
   test "should get new" do
     get new_post_url
     assert_response :success
@@ -19,7 +47,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Interdum iaculis", post.title
     assert_equal "Interdum iaculis etiam efficitur etiam est ligula euismod.", post.body.to_plain_text
 
-    assert_redirected_to post_url(Post.last)
+    assert_redirected_to slugged_post_path(post.user.slug, post.slug)
   end
 
   test "should get edit" do
@@ -38,7 +66,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post = posts(:one)
 
     patch post_url(post), params: { post: { title: "Mauris ipsum", body: "Mauris ipsum venenatis euismod in ligula." } }
-    assert_redirected_to post_url(post)
+    assert_redirected_to slugged_post_path(post.user.slug, post.slug)
 
     post = Post.order(:updated_at).last
     assert_equal "Mauris ipsum", post.title

@@ -8,7 +8,7 @@
     <% @posts.each do |post| %>
       <%= render partial: "posts/post", locals: { post: } %>
       <p>
-        <%= link_to "Show this post", author_post_path(post.user.slug, post.slug), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Show this post", slugged_post_path(post.user.slug, post.slug), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       </p>
     <% end %>
   </div>
