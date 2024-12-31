@@ -6,6 +6,12 @@
         <%= image_tag "chat-bubble-bottom-center-text.svg", width: 24, height: 24, class: "h-8 w-auto", alt: "logo" %>
       <% end %>
     </div>
-    <%= button_to "Sign out", Current.session, method: :delete, class: "text-base text-gray-900 font-semibold" %>
+    <div class="flex gap-8">
+      <%= link_to "Posts", author_posts_path(Current.user.slug), class: "text-base text-gray-900 font-semibold" %>
+      <%= link_to "Drafts", drafts_path, class: "text-base text-gray-900 font-semibold" %>
+      <%= link_to "Archives", archives_path, class: "text-base text-gray-900 font-semibold" %>
+      <%= link_to "Account", edit_user_path, class: "text-base text-gray-900 font-semibold" %>
+      <%= button_to "Sign out", Current.session, method: :delete, class: "text-base text-gray-900 font-semibold" %>
+    </div>
   </nav>
 </header>
