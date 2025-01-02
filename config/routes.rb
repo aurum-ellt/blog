@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
 
   resource :user, only: %i[ edit update destroy ]
-  resources :posts, expect: %i[ index show ]
+  resources :posts, except: %i[ index show ]
 
   scope module: :posts do
     resources :drafts, only: :index
@@ -26,4 +26,11 @@ Rails.application.routes.draw do
 
   get "/:author_slug", to: "posts#index", as: :author_posts
   get "/:author_slug/:slug", to: "posts#show", as: :slugged_post
+
+  resources :authors, path: "", param: :slug, only: [] do
+    resources :subscribers, param: :token, only: %i[ create ] do
+      get :confirmed
+      get :unsubscribe
+    end
+  end
 end
