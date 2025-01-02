@@ -35,6 +35,12 @@
   <% end %>
 
   <div class="mt-12">
-    <%= button_to "Destroy my account", @user, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <%= form_with model: @user, method: :delete, class: "contents", data: { controller: "confirmation" } do |form| %>
+      <div class="my-5">
+        <label for="confirmation">Type "DELETE" to confirm</label>
+        <input id="confirmation" class="block shadow rounded-md border border-gray-400 outline-none focus:outline-blue-600 px-3 py-2 mt-2 w-full" placeholder="DELETE" data-confirmation-target="input" data-confirmation-content="DELETE" data-action="confirmation#check" />
+      </div>
+      <%= form.submit "Destroy my account", class: "rounded-lg py-3 px-5 bg-gray-100 font-medium", disabled: true, data: { confirmation_target: "item" } %>
+    <% end %>
   </div>
 </div>
