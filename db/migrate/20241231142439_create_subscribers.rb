@@ -8,6 +8,7 @@ class CreateSubscribers < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
+
     add_index :subscribers, :token, unique: true
   end
 end
