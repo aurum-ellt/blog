@@ -5,7 +5,6 @@ one:
   title: Lorem ipsum
   body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
   status: 0
-  broadcasted: false
   user: one
 
 two:
@@ -13,7 +12,6 @@ two:
   title: Lorem ipsum
   body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
   status: 1
-  broadcasted: false
   user: one
 
 three:
@@ -21,7 +19,6 @@ three:
   title: Lorem ipsum
   body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
   status: 2
-  broadcasted: false
   user: one
 
 four:
@@ -29,5 +26,4 @@ four:
   title: Interdum iaculis
   body: Interdum iaculis etiam efficitur etiam est ligula euismod.
   status: 0
-  broadcasted: false
   user: two

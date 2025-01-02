@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
 
   resource :user, only: %i[ edit update destroy ]
-  resources :posts, except: %i[ index show ]
+  resources :posts, except: %i[ index show ] do
+    resources :broadcasts, module: :posts, only: :create
+  end
 
   scope module: :posts do
     resources :drafts, only: :index

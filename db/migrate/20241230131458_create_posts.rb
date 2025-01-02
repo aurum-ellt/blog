@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[8.0]
       t.string :title, limit: 89, null: false
       t.text :body
       t.integer :status, null: false
-      t.boolean :broadcasted, null: false, default: false
+      t.datetime :broadcasted_at
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
