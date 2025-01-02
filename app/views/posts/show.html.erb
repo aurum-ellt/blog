@@ -18,6 +18,13 @@
     <div class="flex gap-x-2">
       <%= blog_post_life_cycle_options @post %>
     </div>
+    <div class="mt-2" data-controller="clipboard" data-clipboard-success-content-value="Copied!">
+      <%= hidden_field_tag :original_url, request.original_url, data: { clipboard_target: "source" } %>
+      <button type="button" class="flex gap-x-2" data-action="click->clipboard#copy" data-clipboard-target="button">
+        <%= image_tag "link.svg", size: 24 %>
+        Copy to clipboard
+      </button>
+    </div>
 
     <%= form_with scope: :subscriber, url: author_subscribers_path(@post.user.slug), class: "contents" do |form| %>
       <div class="my-5">
