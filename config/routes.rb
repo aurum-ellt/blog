@@ -24,10 +24,8 @@ Rails.application.routes.draw do
     resources :archives, only: :index
   end
 
-  get "/:author_slug", to: "posts#index", as: :author_posts
-  get "/:author_slug/:slug", to: "posts#show", as: :slugged_post
-
   resources :authors, path: "", param: :slug, only: [] do
+    resources :posts, param: :slug, only: %i[ index show ]
     resources :subscribers, param: :token, only: %i[ create ] do
       get :confirmed
       get :unsubscribe

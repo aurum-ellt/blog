@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to slugged_post_path(@post.user.slug, @post.slug), notice: "Post was successfully created."
+      redirect_to author_post_path(@post.user.slug, @post.slug), notice: "Post was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to slugged_post_path(@post.user.slug, @post.slug), notice: "Post was successfully updated.", status: :see_other
+      redirect_to author_post_path(@post.user.slug, @post.slug), notice: "Post was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end

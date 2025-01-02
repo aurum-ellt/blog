@@ -2,7 +2,7 @@
 
 <% content_for :head do %>
   <%= tag.meta property: "og:title", content: @post.title %>
-  <%= tag.meta property: "og:url", content: slugged_post_url(@post.user.slug, @post.slug) %>
+  <%= tag.meta property: "og:url", content: author_post_url(@post.user.slug, @post.slug) %>
 <% end %>
 
 <div class="mx-auto md:w-2/3 w-full flex">
