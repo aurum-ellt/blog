@@ -1,6 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email_address: one@example.com
-  user: two
+  email_address: two@example.com
+  user: one
   token: <%= SecureRandom.base58(24) %>

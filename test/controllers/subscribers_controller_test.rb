@@ -7,7 +7,9 @@ class SubscribersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create subscriber" do
     assert_difference -> { Subscriber.count }, 1 do
-      post author_subscribers_url(@subscriber.user.slug), params: { subscriber: { email_address: "subscriber@example.com" } }
+      assert_emails 1 do
+        post author_subscribers_url(@subscriber.user.slug), params: { subscriber: { email_address: "subscriber@example.com" } }
+      end
     end
 
     assert_equal "Subscriber was successfully created.", flash[:notice]
