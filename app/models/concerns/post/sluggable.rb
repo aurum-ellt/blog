@@ -2,7 +2,7 @@ module Post::Sluggable
   extend ActiveSupport::Concern
 
   included do
-    before_create :set_slug
+    before_save :set_slug, if: -> { slug.blank? }
   end
 
   private

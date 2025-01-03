@@ -86,7 +86,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_31_142439) do
     t.string "email_address", null: false
     t.string "password_digest", null: false
     t.string "name", limit: 34
-    t.string "slug"
+    t.string "slug", null: false
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

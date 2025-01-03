@@ -8,7 +8,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference -> { User.count }, 1 do
-      post registration_url, params: { user: { email_address: "registration@example.com", password: BCrypt::Password.create("password") } }
+      post registration_url, params: { user: { email_address: "registration@example.com", name: "Lorem ipsum", password: BCrypt::Password.create("password") } }
     end
 
     assert_redirected_to root_path

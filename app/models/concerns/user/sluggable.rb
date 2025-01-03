@@ -2,7 +2,7 @@ module User::Sluggable
   extend ActiveSupport::Concern
 
   included do
-    before_update :set_slug, if: -> { slug.blank? }
+    before_save :set_slug, if: -> { slug.blank? }
   end
 
   private
