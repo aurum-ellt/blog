@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :authors, path: "", param: :slug, only: [] do
-    resources :posts, param: :slug, only: %i[ index show ]
+    resources :posts, path: "", param: :slug, only: %i[ index show ]
     resources :subscribers, param: :token, only: %i[ create ] do
       get :confirmed
       get :unsubscribe
