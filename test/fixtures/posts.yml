@@ -1,29 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  slug: lorem-ipsum-draft
   title: Lorem ipsum
   body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
-  status: 0
+  slug: <%= "lorem-ipsum-#{SecureRandom.hex(6)}" %>
   user: one
+  status: 0
 
 two:
-  slug: lorem-ipsum-published
   title: Lorem ipsum
   body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
-  status: 1
+  slug: <%= "lorem-ipsum-#{SecureRandom.hex(6)}" %>
   user: one
+  status: 1
 
 three:
-  slug: lorem-ipsum-archived
   title: Lorem ipsum
   body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
-  status: 2
+  slug: <%= "lorem-ipsum-#{SecureRandom.hex(6)}" %>
   user: one
+  status: 2
 
 four:
-  slug: interdum-iaculis-draft
   title: Interdum iaculis
   body: Interdum iaculis etiam efficitur etiam est ligula euismod.
-  status: 0
+  slug: <%= "interdum-iaculis-#{SecureRandom.hex(6)}" %>
   user: two
+  status: 0
