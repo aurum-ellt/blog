@@ -9,4 +9,9 @@ class SubscriberTest < ActiveSupport::TestCase
     @subscriber.email_address = nil
     assert_not @subscriber.save
   end
+
+  test "should not save subscriber without token" do
+    @subscriber.token = nil
+    assert_not @subscriber.save
+  end
 end

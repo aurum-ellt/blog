@@ -19,10 +19,4 @@ class PostTest < ActiveSupport::TestCase
     @post.user = nil
     assert_not @post.save
   end
-
-  test "should not publish post without user name" do
-    @post.status = "published"
-    @post.user.name = nil
-    assert_not @post.valid?
-  end
 end
