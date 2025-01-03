@@ -1,11 +1,10 @@
-<div id="<%= dom_id post %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= post.title %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
-    <%= post.body.to_plain_text %>
-  </p>
-</div>
+<article id="<%= dom_id post %>" class="relative border rounded mb-8 p-16">
+  <div class="text-center">
+    <div class="text-sm"><%= l post.published_at if post.published_at.present? %></div>
+    <h2 class="font-semibold text-xl"><%= post.title %></h2>
+  </div>
+  <div class="my-8"><%= truncate(post.body.to_plain_text, length: 250) %></div>
+  <div class="text-center">
+    <%= link_to "Read more", author_post_path(post.user.slug, post.slug), class: "border rounded-full py-2 px-4 after:absolute after:inset-0" %>
+  </div>
+</article>

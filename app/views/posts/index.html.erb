@@ -1,21 +1,19 @@
+<% content_for :title, @author.name %>
+
 <% content_for :head do %>
   <%= auto_discovery_link_tag :atom, author_posts_url(format: :atom), title: "Feed" %>
 <% end %>
 
 <div class="w-full">
-  <% content_for :title, "Posts" %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Posts</h1>
-    <%= link_to "New post", new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="posts" class="min-w-full">
-    <% @posts.each do |post| %>
-      <%= render post %>
-      <p>
-        <%= link_to "Show this post", author_post_path(post.user.slug, post.slug), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
+  <header class="text-center">
+    <%= link_to author_posts_path(@author.slug) do %>
+      <%= image_tag @author.avatar, size: "48", class: "inline-flex rounded-full object-cover h-12" %>
+      <p class="font-semibold text-xl mt-2"><%= @author.name.upcase %></p>
     <% end %>
-  </div>
+    <div class="mt-8"><%= @author.bio %></div>
+  </header>
+
+  <section id="posts" class="mt-16">
+    <%= render @posts %>
+  </section>
 </div>
