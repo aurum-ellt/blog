@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @post = @author.posts.find_by(slug: params.expect(:slug))
+    return head :not_found unless @post
     head :forbidden unless @post.published? || (authenticated? && @post.user == Current.user)
   end
 
@@ -46,6 +47,7 @@ class PostsController < ApplicationController
   private
     def set_author
       @author = User.find_by(slug: params.expect(:author_slug))
+      head :not_found unless @author
     end
 
     def set_post
