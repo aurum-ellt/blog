@@ -55,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_31_142439) do
     t.string "slug", null: false
     t.integer "user_id", null: false
     t.integer "status", null: false
+    t.datetime "published_at"
     t.datetime "broadcasted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

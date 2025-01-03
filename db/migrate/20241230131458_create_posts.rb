@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration[8.0]
       t.string :slug, null: false
       t.references :user, null: false, foreign_key: true
       t.integer :status, null: false
+      t.datetime :published_at
       t.datetime :broadcasted_at
 
       t.timestamps
