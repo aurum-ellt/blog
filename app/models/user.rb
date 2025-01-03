@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :subscribers, dependent: :destroy
 
   has_one_attached :avatar
+  has_rich_text :bio
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 

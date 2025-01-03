@@ -26,7 +26,7 @@
 
     <div class="my-5">
       <%= form.label :bio %>
-      <%= form.textarea :bio, rows: 4, class: "block shadow rounded-md border border-gray-400 outline-none focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      <%= form.rich_textarea :bio, rows: 4, class: "block shadow rounded-md border border-gray-400 outline-none focus:outline-blue-600 px-3 py-2 mt-2 w-full", data: { controller: "trix", trix_unused_components_value: [".trix-button-group--block-tools", ".trix-button-group--file-tools", ".trix-button-group--history-tools"] } %>
     </div>
 
     <div class="inline">

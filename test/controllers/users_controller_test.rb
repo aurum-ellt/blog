@@ -16,7 +16,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     user = User.order(:updated_at).last
     assert_equal "Lorem ipsum", user.name
-    assert_equal "Lorem ipsum odor amet, consectetuer adipiscing elit.", user.bio
+    assert_equal "Lorem ipsum odor amet, consectetuer adipiscing elit.", user.bio.to_plain_text
   end
 
   test "should destroy user" do
