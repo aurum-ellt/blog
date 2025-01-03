@@ -3,7 +3,7 @@ class SubscribersController < ApplicationController
   before_action :set_subscriber, only: %i[ confirmed unsubscribe ]
 
   def create
-    author = User.find_by(slug: params.expect(:author_slug))
+    author = User.find_by!(slug: params.expect(:author_slug))
 
     if subscriber = author.subscribers.create(subscriber_params)
       SubscribersMailer.confirm(subscriber, author).deliver_later
@@ -25,7 +25,7 @@ class SubscribersController < ApplicationController
 
   private
     def set_subscriber
-      @subscriber = Subscriber.find_by(token: params.expect(:subscriber_token))
+      @subscriber = Subscriber.find_by!(token: params.expect(:subscriber_token))
     end
 
     def subscriber_params
