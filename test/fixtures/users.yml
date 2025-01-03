@@ -3,11 +3,11 @@
 one:
   email_address: one@example.com
   password_digest: <%= password_digest %>
-  name: "One"
+  name: One
   slug: <%= "one-#{SecureRandom.hex(2)}" %>
 
 two:
   email_address: two@example.com
   password_digest: <%= password_digest %>
-  name: "Two"
+  name: Two
   slug: <%= "two-#{SecureRandom.hex(2)}" %>
