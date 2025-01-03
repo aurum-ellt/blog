@@ -14,4 +14,11 @@ class Posts::BroadcastsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to author_post_url(post.user.slug, post.slug)
   end
+
+  test "should forbid broadcast for unpublished post" do
+    post = posts(:one)
+
+    post post_broadcasts_url(post)
+    assert_response :forbidden
+  end
 end
