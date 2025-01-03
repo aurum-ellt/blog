@@ -1,5 +1,4 @@
 class PostsMailer < ApplicationMailer
-  # before_action :set_post
   after_deliver :mark_post_as_broadcasted
 
   def broadcast(post)
