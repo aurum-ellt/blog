@@ -3,8 +3,8 @@ class CreateUsers < ActiveRecord::Migration[8.0]
     create_table :users do |t|
       t.string :email_address, null: false
       t.string :password_digest, null: false
+      t.string :name, limit: 34
       t.string :slug
-      t.string :pseudo, limit: 34
       t.text :bio
 
       t.timestamps

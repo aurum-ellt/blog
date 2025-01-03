@@ -4,7 +4,7 @@ class PostsMailer < ApplicationMailer
 
   def broadcast(post)
     @post = post
-    mail subject: post.title, from: email_address_with_name("from@example.com", post.user.pseudo), to: post.user.subscribers.pluck(:email_address)
+    mail subject: post.title, from: email_address_with_name("from@example.com", post.user.name), to: post.user.subscribers.pluck(:email_address)
   end
 
   private

@@ -20,13 +20,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.save
   end
 
-  test "should not update user without pseudo" do
-    @user.pseudo = nil
+  test "should not update user without name" do
+    @user.name = nil
     assert_not @user.save
   end
 
-  test "should not save user if pseudo length more than 34" do
-    @user.pseudo = "Lorem ipsum odor amet, consectetuer adipiscing elit"
+  test "should not save user if name length more than 34" do
+    @user.name = "Lorem ipsum odor amet, consectetuer adipiscing elit"
     assert_not @user.save
   end
 end

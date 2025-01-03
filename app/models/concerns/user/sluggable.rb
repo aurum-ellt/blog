@@ -7,6 +7,6 @@ module User::Sluggable
 
   private
     def set_slug
-      self.slug = "#{pseudo.parameterize}-#{SecureRandom.hex(2)}"
+      self.slug = "#{name.parameterize}-#{SecureRandom.hex(2)}"
     end
 end

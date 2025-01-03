@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title @posts.first.user.pseudo
+  feed.title @posts.first.user.name
   feed.updated @posts.maximum(:updated_at)
 
   @posts.each do |post|
@@ -8,7 +8,7 @@ atom_feed do |feed|
       entry.content post.body, type: :html
 
       entry.author do |author|
-        author.name post.user.pseudo
+        author.name post.user.name
       end
     end
   end

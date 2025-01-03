@@ -7,12 +7,12 @@ class Post < ApplicationRecord
   belongs_to :user, default: -> { Current.user }
 
   validates :title, presence: true
-  validate :status_cannot_be_published_without_pseudo
+  validate :status_cannot_be_published_without_name
 
   private
-    def status_cannot_be_published_without_pseudo
-      if published? && user.pseudo.blank?
-        errors.add(:status, "can't be publish without a pseudo")
+    def status_cannot_be_published_without_name
+      if published? && user.name.blank?
+        errors.add(:status, "can't be publish without a name")
       end
     end
 end

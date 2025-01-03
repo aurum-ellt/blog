@@ -11,11 +11,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get update" do
-    patch user_url, params: { user: { pseudo: "Lorem ipsum", bio: "Lorem ipsum odor amet, consectetuer adipiscing elit." } }
+    patch user_url, params: { user: { name: "Lorem ipsum", bio: "Lorem ipsum odor amet, consectetuer adipiscing elit." } }
     assert_redirected_to edit_user_url
 
     user = User.order(:updated_at).last
-    assert_equal "Lorem ipsum", user.pseudo
+    assert_equal "Lorem ipsum", user.name
     assert_equal "Lorem ipsum odor amet, consectetuer adipiscing elit.", user.bio
   end
 
