@@ -1,8 +1,23 @@
 <% content_for(:title) { @post.title } %>
 
 <% content_for :head do %>
+  <%= auto_discovery_link_tag :atom, author_posts_url(format: :atom), title: "Feed" %>
+
+  <%= tag.meta property: "author", content: @author.name %>
+  <%= tag.meta property: "description", content: truncate(@post.body.to_plain_text, length: 250) %>
+  <%= tag.meta property: "robots", content: "index, follow" %>
+
+  <%= tag.meta property: "og:site_name", content: "Blog" %>
+  <%= tag.meta property: "og:type", content: "article" %>
+  <%= tag.meta property: "og:url", content: author_post_url(@author.slug, @post.slug) %>
   <%= tag.meta property: "og:title", content: @post.title %>
-  <%= tag.meta property: "og:url", content: author_post_url(@post.user.slug, @post.slug) %>
+  <%= tag.meta property: "og:description", content: truncate(@post.body.to_plain_text, length: 250) %>
+  <%= tag.meta property: "og:image", content: @author.avatar.present? ? url_for(@author.avatar) : image_url("user-circle.svg") %>
+
+  <%= tag.meta property: "twitter:title", content: @post.title %>
+  <%= tag.meta property: "twitter:description", content: truncate(@post.body.to_plain_text, length: 250) %>
+  <%= tag.meta property: "twitter:image", content: @author.avatar.present? ? url_for(@author.avatar) : image_url("user-circle.svg") %>
+  <%= tag.meta property: "twitter:card", content: "summary_large_image" %>
 <% end %>
 
 <div class="mx-auto md:w-2/3 w-full flex">
@@ -10,7 +25,7 @@
     <%= render @post %>
 
     <%= link_to "Edit this post", edit_post_path(@post), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to posts", author_posts_path(@post.user.slug), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Back to posts", author_posts_path(@author.slug), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="flex gap-x-2">
       <%= blog_post_life_cycle_options @post %>
     </div>
@@ -22,7 +37,7 @@
       </button>
     </div>
 
-    <%= form_with scope: :subscriber, url: author_subscribers_path(@post.user.slug), class: "contents" do |form| %>
+    <%= form_with scope: :subscriber, url: author_subscribers_path(@author.slug), class: "contents" do |form| %>
       <div class="my-5">
         <%= form.label :title, "Subscribe to get future posts via email" %>
         <%= form.email_field :email_address, required: true, placeholder: "Enter your email address", class: "block shadow rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>

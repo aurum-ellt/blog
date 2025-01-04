@@ -2,6 +2,21 @@
 
 <% content_for :head do %>
   <%= auto_discovery_link_tag :atom, author_posts_url(format: :atom), title: "Feed" %>
+
+  <%= tag.meta property: "description", content: @author.name %>
+  <%= tag.meta property: "robots", content: "index, follow" %>
+
+  <%= tag.meta property: "og:site_name", content: "Blog" %>
+  <%= tag.meta property: "og:type", content: "article" %>
+  <%= tag.meta property: "og:url", content: author_posts_url(@author.slug) %>
+  <%= tag.meta property: "og:title", content: @author.name %>
+  <%= tag.meta property: "og:description", content: @author.name %>
+  <%= tag.meta property: "og:image", content: @author.avatar.present? ? url_for(@author.avatar) : image_url("user-circle.svg") %>
+
+  <%= tag.meta property: "twitter:title", content: @author.name %>
+  <%= tag.meta property: "twitter:description", content: @author.name %>
+  <%= tag.meta property: "twitter:image", content: @author.avatar.present? ? url_for(@author.avatar) : image_url("user-circle.svg") %>
+  <%= tag.meta property: "twitter:card", content: "summary_large_image" %>
 <% end %>
 
 <div class="w-full">
