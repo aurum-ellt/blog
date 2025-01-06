@@ -28,7 +28,7 @@
     <% end %>
   </header>
 
-  <p class="text-center"><%= l post.published_at if @post.published_at.present? %></p>
+  <p class="text-center"><%= l @post.published_at, format: :full_date if @post.published_at.present? %></p>
   <h1 class="font-bold text-4xl text-center"><%= @post.title %></h1>
 
   <section class="my-16">
