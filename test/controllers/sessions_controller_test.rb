@@ -6,6 +6,13 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should redirect to root path if user is authenticated" do
+    sign_in users(:one)
+
+    get new_session_url
+    assert_redirected_to root_path
+  end
+
   test "should create session" do
     user = users(:one)
 
