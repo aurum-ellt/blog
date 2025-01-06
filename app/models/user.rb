@@ -15,6 +15,6 @@ class User < ApplicationRecord
 
   validates :email_address, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:password_digest] }
-  validates :name, presence: true, length: { maximum: 34 }, unless: -> { new_record? }
+  validates :name, presence: true, length: { maximum: 34 }
   validates :avatar, blob: { content_type: %w[image/jpeg image/png image/webp], max_size: 5.megabytes }
 end
