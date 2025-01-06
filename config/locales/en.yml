@@ -30,6 +30,12 @@
 en:
   hello: "Hello world"
 
+  activerecord:
+    errors:
+      messages:
+        content_type: "Allowed file format are %{content_types}"
+        max_size: "File size should be less than %{max_size}"
+
   time:
     formats:
       full_date: "%B %d, %Y"
