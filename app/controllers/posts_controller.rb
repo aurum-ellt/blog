@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action -> { ensure_permissions_for @post }, only: %i[ edit update destroy ]
 
   def index
-    @posts = @author.posts.published
+    @posts = @author.posts.published.order(published_at: :desc)
   end
 
   def show
