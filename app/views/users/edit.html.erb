@@ -42,7 +42,7 @@
         <label for="confirmation">Type "DELETE" to confirm</label>
         <input id="confirmation" class="block shadow rounded-md border border-gray-400 outline-none focus:outline-blue-600 px-3 py-2 mt-2 w-full" placeholder="DELETE" data-confirmation-target="input" data-confirmation-content="DELETE" data-action="confirmation#check" />
       </div>
-      <%= form.submit "Destroy my account", class: "rounded-lg py-3 px-5 bg-gray-100 font-medium", disabled: true, data: { confirmation_target: "item" } %>
+      <%= form.submit "Destroy my account", class: "rounded-lg py-3 px-5 bg-gray-100 font-medium cursor-pointer", disabled: true, data: { confirmation_target: "item" } %>
     <% end %>
   </div>
 </div>
