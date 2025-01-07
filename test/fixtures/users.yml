@@ -5,6 +5,7 @@ one:
   password_digest: <%= password_digest %>
   name: <%= author = Faker::Book.author %>
   slug: <%= "#{author.parameterize}-#{SecureRandom.hex(2)}" %>
+  bio: 
 
 two:
   email_address: two@example.com

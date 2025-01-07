@@ -19,3 +19,8 @@ four:
   record: four (Post)
   name: body
   body: <%= text %>
+
+five:
+  record: one (User)
+  name: bio
+  body: <%= Faker::Lorem.paragraphs(number: 10).join(" ") %>
