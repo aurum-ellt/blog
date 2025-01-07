@@ -39,8 +39,8 @@
     <%= form_with scope: :subscriber, url: author_subscribers_path(@author.slug), class: "contents" do |form| %>
       <%= form.label :email_address, "Subscribe to get future posts via email", class: "block" %>
       <div class="inline-flex mt-4">
-        <%= form.email_field :email_address, required: true, placeholder: "Enter your email address", class: "block border border-y-gray-400 border-l-gray-400 border-r-transparent rounded-l-full focus:outline-blue-600 px-3 py-2" %>
-        <%= form.submit "Subscribe", class: "rounded-r-full bg-blue-600 text-white font-medium py-3 px-5 cursor-pointer" %>
+        <%= form.email_field :email_address, required: true, placeholder: "Enter your email address", class: "form-control border-r-transparent rounded-l-full" %>
+        <%= form.submit "Subscribe", class: "btn btn-primary rounded-l-none" %>
       </div>
     <% end %>
   </section>
