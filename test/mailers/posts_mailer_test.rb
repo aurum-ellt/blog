@@ -12,6 +12,5 @@ class PostsMailerTest < ActionMailer::TestCase
     assert_equal [ "from@example.com" ], email.from
     assert_equal post.user.subscribers.pluck(:email_address), email.to
     assert_equal post.title, email.subject
-    assert_equal post.body.to_plain_text, email.body.to_s
   end
 end

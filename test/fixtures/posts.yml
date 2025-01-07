@@ -1,33 +1,28 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 <% now = Time.zone.now %>
 
 one:
-  title: Lorem ipsum
-  body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
-  slug: <%= "lorem-ipsum-#{SecureRandom.hex(6)}" %>
+  title: <%= title = Faker::Book.title %>
+  slug: <%= "#{title.parameterize}-#{SecureRandom.hex(6)}" %>
   user: one
   status: 0
 
 two:
-  title: Lorem ipsum
-  body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
-  slug: <%= "lorem-ipsum-#{SecureRandom.hex(6)}" %>
+  title: <%= title = Faker::Book.title %>
+  slug: <%= "#{title.parameterize}-#{SecureRandom.hex(6)}" %>
   user: one
   status: 1
   published_at: <%= now %>
 
 three:
-  title: Lorem ipsum
-  body: Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque.
-  slug: <%= "lorem-ipsum-#{SecureRandom.hex(6)}" %>
+  title: <%= title = Faker::Book.title %>
+  slug: <%= "#{title.parameterize}-#{SecureRandom.hex(6)}" %>
   user: one
   status: 2
   published_at: <%= now %>
 
 four:
-  title: Interdum iaculis
-  body: Interdum iaculis etiam efficitur etiam est ligula euismod.
-  slug: <%= "interdum-iaculis-#{SecureRandom.hex(6)}" %>
+  title: <%= title = Faker::Book.title %>
+  slug: <%= "#{title.parameterize}-#{SecureRandom.hex(6)}" %>
   user: two
   status: 0

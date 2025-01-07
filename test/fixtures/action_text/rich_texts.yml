@@ -1,4 +1,21 @@
-# one:
-#   record: name_of_fixture (ClassOfFixture)
-#   name: content
-#   body: <p>In a <i>million</i> stars!</p>
+<% text = Faker::Lorem.paragraphs(number: 20).join(" ") %>
+
+one:
+  record: one (Post)
+  name: body
+  body: <%= text %>
+
+two:
+  record: two (Post)
+  name: body
+  body: <%= text %>
+
+three:
+  record: three (Post)
+  name: body
+  body: <%= text %>
+
+four:
+  record: four (Post)
+  name: body
+  body: <%= text %>
