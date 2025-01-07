@@ -1,7 +1,7 @@
 <article id="<%= dom_id post %>" class="relative border rounded mb-8 p-16">
   <div class="text-center">
     <div class="text-sm"><%= l post.published_at, format: :full_date if post.published_at.present? %></div>
-    <h2 class="font-semibold text-xl"><%= post.title %></h2>
+    <h2 class="font-semibold text-xl text-primary-500"><%= post.title %></h2>
   </div>
   <div class="my-8"><%= truncate(post.body.to_plain_text, length: 250) %></div>
   <div class="text-center">
