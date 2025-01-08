@@ -18,7 +18,7 @@
 
   <div class="my-5">
     <%= form.label :body, class: "form-label" %>
-    <%= form.rich_textarea :body, rows: 4, class: "form-control" %>
+    <%= form.rich_textarea :body, rows: 4, class: "form-control", data: { controller: "trix", trix_unused_components_value: [".trix-button--icon-heading-1", ".trix-button-group--file-tools", ".trix-button-group--history-tools"] } %>
   </div>
 
   <div class="inline">

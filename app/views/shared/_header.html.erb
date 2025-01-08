@@ -19,8 +19,8 @@
         </button>
         <div class="absolute right-0 top-8 border rounded shadow bg-white min-w-64 transition transform origin-top-right hidden" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
           <ul class="flex flex-col gap-y-2 p-4">
-            <li><%= link_to "Posts", author_posts_path(Current.user.slug), class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
-            <li><%= link_to "My Drafts", drafts_path, class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
+            <li><%= link_to "My Blog", author_posts_path(Current.user.slug), class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
+            <li><%= link_to "Drafts", drafts_path, class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
             <li><%= link_to "Archives", archives_path, class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
             <li><%= link_to "Profile", edit_user_path, class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
           </ul>
