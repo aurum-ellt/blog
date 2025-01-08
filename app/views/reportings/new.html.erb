@@ -1,0 +1,40 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl text-center">New reporting</h1>
+
+  <%= form_with model: @reporting, class: "contents"  do |form| %>
+    <% if @reporting.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(@reporting.errors.count, "error") %> prohibited this reporting from being saved:</h2>
+
+        <ul>
+          <% @reporting.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="flex flex-col gap-y-2 my-5">
+      <%= form.collection_radio_buttons :category, Reporting.categories.keys, :to_s, :humanize do |b| %>
+        <div>
+          <%= b.radio_button %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :url, class: "form-label" %>
+      <%= form.text_field :url, class: "form-control" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :message, class: "form-label" %>
+      <%= form.textarea :message, rows: 4, class: "form-control" %>
+    </div>
+
+    <div class="inline">
+      <%= form.submit "Send feedback", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

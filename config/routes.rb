@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
 
+  resources :reportings, only: %i[ new create ]
+
   resource :user, only: %i[ edit update destroy ]
   resources :posts, except: %i[ index show ] do
     resources :broadcasts, module: :posts, only: :create
