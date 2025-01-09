@@ -23,13 +23,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen">
     <%= render "shared/flash" %>
-    <%= render "shared/header" if authenticated? %>
-    <main class="container mx-auto max-w-3xl my-28 px-4 flex">
+    <%= render "shared/header" %>
+    <main class="container grow mx-auto max-w-3xl my-28 px-4 flex">
       <%= yield %>
     </main>
-    <footer id="footer">
+    <footer id="footer" class="mt-auto">
       <%= yield :footer %>
     </footer>
   </body>

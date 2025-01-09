@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "posts/drafts#index"
+  root "pages#home"
 
   resource :registration, only: %i[ new create ]
   resource :session
