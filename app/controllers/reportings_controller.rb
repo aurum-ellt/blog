@@ -2,7 +2,7 @@ class ReportingsController < ApplicationController
   allow_unauthenticated_access
 
   def new
-    @reporting = Reporting.new
+    @reporting = Reporting.new(url: request.referer)
   end
 
   def create
