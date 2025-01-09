@@ -23,7 +23,7 @@
   <header class="text-center">
     <%= link_to author_posts_path(@author.slug) do %>
       <%= image_tag @author.avatar.presence || "user-circle.svg", size: "48", class: "inline-flex rounded-full object-cover h-12" %>
-      <p class="font-semibold text-xl text-primary-400 mt-2"><%= @author.name.upcase %></p>
+      <p class="font-bold text-xl text-primary-400 mt-2"><%= @author.name.upcase %></p>
     <% end %>
     <div class="mt-8"><%= @author.bio %></div>
   </header>
