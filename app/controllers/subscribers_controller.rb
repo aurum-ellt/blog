@@ -1,12 +1,11 @@
 class SubscribersController < ApplicationController
   allow_unauthenticated_access
+  before_action :set_author
   before_action :set_subscriber, only: %i[ confirmed unsubscribe ]
 
   def create
-    author = User.find_by!(slug: params.expect(:author_slug))
-
-    if subscriber = author.subscribers.create(subscriber_params)
-      SubscribersMailer.confirm(subscriber, author).deliver_later
+    if subscriber = @author.subscribers.create(subscriber_params)
+      SubscribersMailer.confirm(subscriber, @author).deliver_later
       flash[:notice] = "Subscriber was successfully created."
     else
       flash[:alert] = "Sorry, something went wrong."
@@ -24,6 +23,10 @@ class SubscribersController < ApplicationController
   end
 
   private
+    def set_author
+      @author = User.find_by!(slug: params.expect(:author_slug))
+    end
+
     def set_subscriber
       @subscriber = Subscriber.find_by!(token: params.expect(:subscriber_token))
     end

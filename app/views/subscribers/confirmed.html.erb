@@ -1,1 +1,10 @@
-<p>Confirmed</p>
+<div class="relative w-full">
+  <header class="text-center mb-16">
+    <%= link_to author_posts_path(@author.slug) do %>
+      <%= image_tag @author.avatar.presence || "user-circle.svg", size: "48", class: "inline-flex rounded-full object-cover h-12", alt: "Avatar" %>
+      <p class="font-bold text-xl text-primary-400 mt-2"><%= @author.name.upcase %></p>
+    <% end %>
+  </header>
+
+  <h1 class="font-bold text-4xl text-center">You're on the list.</h1>
+</div>
