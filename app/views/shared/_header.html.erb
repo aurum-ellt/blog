@@ -8,15 +8,15 @@
     </div>
     <div class="flex items-center gap-8">
       <%= link_to new_post_path, class: "text-sm text-gray-600 font-semibold" do %>
-        <div class="flex items-center gap-x-2">
-          <%= image_tag "pencil-square.svg", size: 18, alt: "Pencil" %>
-          <span class="pt-0.5">Write</span>
+        <div class="flex items-center gap-x-1">
+          <%= image_tag "pencil.svg", size: 16, alt: "Pencil" %>
+          <span>Write</span>
         </div>
       <% end %>
       <% if authenticated? %>
         <div class="relative flex" data-controller="dropdown">
           <button type="button" class="text-base text-gray-900 font-semibold" data-action="dropdown#toggle click@window->dropdown#hide">
-            <%= image_tag Current.user.avatar.presence || "user-circle.svg", size: 24, class: "rounded-full h-6", alt: "Avatar" %>
+            <%= image_tag Current.user.avatar.presence || "user-circle.svg", size: 24, class: "border rounded-full h-6", alt: "Avatar" %>
           </button>
           <div class="absolute right-0 top-8 z-10 border rounded shadow bg-white min-w-64 transition transform origin-top-right hidden" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
             <ul class="flex flex-col gap-y-2 p-4">
@@ -32,7 +32,8 @@
           </div>
         </div>
       <% else %>
-        <%= link_to "Get started", new_session_path, class: "btn btn-primary text-sm py-1 px-3" %>
+        <%= link_to "Sign in", new_session_path, class: "text-sm text-gray-600 font-semibold" %>
+        <%= link_to "Get started", new_registration_path, class: "btn btn-primary text-sm py-1 px-3" %>
       <% end %>
     </div>
   </nav>
