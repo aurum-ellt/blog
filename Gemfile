@@ -72,3 +72,6 @@ end
 
 # Standalone streaming replication tool for SQLite
 gem "litestream"
+
+# Rails-based frontend to Active Job adapters
+gem "mission_control-jobs"
