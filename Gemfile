@@ -69,3 +69,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Standalone streaming replication tool for SQLite
+gem "litestream"

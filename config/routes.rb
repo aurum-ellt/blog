@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
 
+  mount Litestream::Engine, at: "/litestream"
+
   resource :registration, only: %i[ new create ]
   resource :session
   resources :passwords, param: :token
