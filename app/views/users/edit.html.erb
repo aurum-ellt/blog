@@ -19,7 +19,7 @@
     <div class="my-5">
       <% if @user.avatar.present? %>
         <div class="mb-2">
-          <%= image_tag @user.avatar.representation(resize_to_limit: [100, 100]), size: 80, class: "rounded-full object-cover h-20" %>
+          <%= image_tag @user.avatar.variant(:small), size: 80, class: "rounded-full object-cover h-20" %>
         </div>
       <% end %>
       <%= form.file_field :avatar, class: "form-control", accept: "image/png,image/jpeg,image/webp" %>
