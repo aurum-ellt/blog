@@ -31,4 +31,10 @@
   <section id="posts" class="mt-16">
     <%= render @posts %>
   </section>
+
+  <% if authenticated? %>
+    <div class="text-center mt-24">
+      <%= link_to "View archived posts", archives_path, class: "border rounded-full py-2 px-4" %>
+    </div>
+  <% end %>
 </div>

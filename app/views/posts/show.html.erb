@@ -88,7 +88,7 @@
         <button type="button" class="text-base text-gray-900 font-semibold" data-action="dropdown#toggle click@window->dropdown#hide">
           <%= image_tag "ellipsis-horizontal.svg", size: 28 %>
         </button>
-        <div class="absolute right-0 top-8 border rounded shadow bg-white min-w-64 transition transform origin-top-right hidden" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+        <div class="absolute right-0 top-8 z-10 border rounded shadow bg-white min-w-64 transition transform origin-top-right hidden" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
           <ul class="flex flex-col gap-y-2 p-4">
             <li><%= link_to "Edit this post", edit_post_path(@post), class: "block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold" %></li>
             <%= blog_post_life_cycle_options @post %>
@@ -96,5 +96,9 @@
         </div>
       </div>
     </div>
+  <% end %>
+
+  <% if @post.archived? %>
+    <div class="absolute top-20 left-20 border-4 border-red-500 font-extrabold text-xl text-red-500 p-0.5 -rotate-12">ARCHIVED</div>
   <% end %>
 </div>
