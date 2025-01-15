@@ -91,6 +91,27 @@
         <div class="absolute right-0 top-8 z-10 border rounded shadow bg-white min-w-64 transition transform origin-top-right hidden" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
           <ul class="flex flex-col gap-y-2 p-4">
             <li><%= link_to "Edit this post", edit_post_path(@post), class: "block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold" %></li>
+
+            <% if @post.draft? || @post.archived? %>
+              <div data-controller="dialog" data-action="click->dialog#backdropClose">
+                <button type="button" class="block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold" data-action="click->dialog#open">Publish this post</button>
+
+                <dialog class="relative rounded-lg shadow-lg" data-dialog-target="dialog">
+                  <form method="dialog">
+                    <button class="absolute right-4 top-4">
+                      <%= image_tag "x-mark.svg", size: 24, aria: { hidden: true } %>
+                      <span class="sr-only">Close</span>
+                    </button>
+                  </form>
+
+                  <div class="flex flex-col gap-6 text-center py-12 px-8">
+                    <p class="text-lg text-gray-500">Are you sure you want to publish this post?</p>
+                    <%= button_to "Publish", @post, method: :patch, params: { post: { status: :published } }, class: "btn btn-primary" %>
+                  </div>
+                </dialog>
+              </div>
+            <% end %>
+
             <%= blog_post_life_cycle_options @post %>
           </ul>
         </div>
