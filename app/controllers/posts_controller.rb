@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action -> { ensure_permissions_for @post }, only: %i[ edit update destroy ]
 
   def index
-    @posts = @author.posts.published.order(published_at: :desc)
+    set_page_and_extract_portion_from @author.posts.published, ordered_by: { published_at: :desc, id: :desc }, per_page: 2
   end
 
   def show

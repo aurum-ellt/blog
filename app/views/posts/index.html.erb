@@ -29,8 +29,14 @@
   </header>
 
   <section id="posts" class="mt-16">
-    <%= render @posts %>
+    <%= render @page.records %>
   </section>
+
+  <% unless @page.last? %>
+    <div class="text-center mt-24">
+      <%= link_to "Next page", author_posts_path(@author.slug, page: @page.next_param), class: "border rounded-full py-2 px-4" %>
+    </div>
+  <% end %>
 
   <% if authenticated? %>
     <div class="text-center mt-24">

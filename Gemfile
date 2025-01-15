@@ -75,3 +75,6 @@ gem "litestream"
 
 # Rails-based frontend to Active Job adapters
 gem "mission_control-jobs"
+
+# Pagination
+gem "geared_pagination"
