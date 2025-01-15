@@ -4,7 +4,6 @@ module PostsHelper
 
     if post.draft? || post.archived?
       options += button_to("Publish this post", post, method: :patch, params: { post: { status: :published } }, class: "block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold")
-      options += button_to("Destroy this post", post, method: :delete, class: "block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold")
     end
 
     if post.published?
