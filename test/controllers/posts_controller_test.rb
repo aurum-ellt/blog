@@ -91,7 +91,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       delete post_url(post)
     end
 
-    assert_redirected_to posts_url
+    assert_redirected_to author_posts_url(post.user.slug)
   end
 
   test "should forbid destroy for unauthorized user" do

@@ -40,7 +40,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to posts_path, notice: "Post was successfully destroyed.", status: :see_other
+    redirect_to author_posts_path(@post.user.slug), notice: "Post was successfully destroyed.", status: :see_other
   end
 
   private
