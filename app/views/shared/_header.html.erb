@@ -1,26 +1,25 @@
 <header>
   <nav class="mx-auto max-w-3xl flex items-center justify-between  p-4" aria-label="Global">
     <div class="flex lg:flex-1">
-      <%= link_to root_path do %>
+      <%= link_to authenticated? ? author_posts_path(Current.user.slug) : root_path do %>
         <span class="sr-only">Blog</span>
-        <%= image_tag "chat-bubble-bottom-center-text.svg", size: 24, alt: "logo" %>
+        <%= image_tag "chat-bubble-bottom-center-text.svg", size: 30, alt: "logo" %>
       <% end %>
     </div>
     <div class="flex items-center gap-8">
-      <%= link_to new_post_path, class: "border rounded-full text-sm text-gray-600 font-semibold py-1 px-4" do %>
-        <div class="flex items-center gap-x-1.5">
-          <%= image_tag "pencil.svg", size: 16, alt: "Pencil" %>
-          <span>Write</span>
-        </div>
-      <% end %>
       <% if authenticated? %>
+        <%= link_to new_post_path, class: "btn btn-primary text-sm py-1 px-4" do %>
+          <div class="flex items-center gap-x-1.5">
+            <%= image_tag "pencil.svg", size: 16, style: "filter:  brightness(0) invert(1);", alt: "Pencil" %>
+            <span>Write</span>
+          </div>
+        <% end %>
         <div class="relative flex" data-controller="dropdown">
           <button type="button" class="text-base text-gray-900 font-semibold" data-action="dropdown#toggle click@window->dropdown#hide">
-            <%= image_tag Current.user.avatar.presence || "user-circle.svg", size: 28, class: "border rounded-full h-7", alt: "Avatar" %>
+            <%= image_tag Current.user.avatar.presence || "user-circle.svg", size: 30, class: "border border-gray-400 rounded-full h-7.5", alt: "Avatar" %>
           </button>
-          <div class="absolute right-0 top-8 z-10 border rounded shadow bg-white min-w-64 transition transform origin-top-right hidden" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+          <div class="absolute right-0 top-10 z-10 border rounded shadow bg-white min-w-64 transition transform origin-top-right hidden" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
             <ul class="flex flex-col gap-y-2 p-4">
-              <li><%= link_to "My Blog", author_posts_path(Current.user.slug), class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
               <li><%= link_to "Drafts", drafts_path, class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
               <li><%= link_to "Profile", edit_user_path, class: "block text-base text-gray-600 font-normal hover:text-gray-900" %></li>
             </ul>
