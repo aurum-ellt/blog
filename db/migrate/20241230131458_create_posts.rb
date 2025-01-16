@@ -10,8 +10,9 @@ class CreatePosts < ActiveRecord::Migration[8.0]
       t.datetime :broadcasted_at
 
       t.timestamps
-    end
 
-    add_index :posts, :slug, unique: true
+      t.index [ :slug ], unique: true
+      t.index [ :published_at ]
+    end
   end
 end

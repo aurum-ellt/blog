@@ -8,9 +8,9 @@ class CreateUsers < ActiveRecord::Migration[8.0]
       t.text :bio
 
       t.timestamps
-    end
 
-    add_index :users, :email_address, unique: true
-    add_index :users, :slug, unique: true
+      t.index [ :email_address ], unique: true
+      t.index [ :slug ], unique: true
+    end
   end
 end
