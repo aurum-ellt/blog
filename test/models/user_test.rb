@@ -11,7 +11,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should not save user if email address already exists" do
-    duplicate_user = User.new(email_address: @user.email_address)
+    duplicate_user = users(:two)
+    duplicate_user.email_address = @user.email_address
+
     assert_not duplicate_user.save
   end
 
