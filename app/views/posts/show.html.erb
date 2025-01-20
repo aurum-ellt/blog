@@ -112,7 +112,10 @@
               </div>
             <% end %>
 
-            <%= blog_post_life_cycle_options @post %>
+            <% if @post.published? %>
+              <%= button_to "Broadcast this post", post_broadcasts_path(@post), method: :post, class: "block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold" %>
+              <%= button_to "Archive this post", @post, method: :patch, params: { post: { status: :archived } }, class: "block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold" %>
+            <% end %>
           </ul>
         </div>
       </div>

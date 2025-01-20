@@ -1,12 +1,2 @@
 module PostsHelper
-  def blog_post_life_cycle_options(post)
-    options = ""
-
-    if post.published?
-      options += button_to("Broadcast this post", post_broadcasts_path(post), method: :post, class: "block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold")
-      options += button_to("Archive this post", post, method: :patch, params: { post: { status: :archived } }, class: "block text-base text-gray-500 font-normal hover:text-primary-500 hover:font-semibold")
-    end
-
-    options.html_safe
-  end
 end
