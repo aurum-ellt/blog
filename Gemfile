@@ -78,3 +78,6 @@ gem "mission_control-jobs"
 
 # Pagination
 gem "geared_pagination"
+
+# Standard protocol for authorization
+gem "oauth2"
