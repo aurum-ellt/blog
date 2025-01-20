@@ -3,7 +3,11 @@ class PostsMailer < ApplicationMailer
 
   def broadcast(post)
     @post = post
-    mail subject: post.title, from: email_address_with_name("from@example.com", post.user.name), to: post.user.subscribers.pluck(:email_address)
+
+    post.user.subscribers.each do |subscriber|
+      @subscriber_token = subscriber.token
+      mail subject: post.title, from: email_address_with_name("from@example.com", post.user.name), to: subscriber.email_address
+    end
   end
 
   private

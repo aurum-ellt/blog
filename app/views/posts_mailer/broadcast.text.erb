@@ -1,1 +1,2 @@
 <%= @post.body %>
+Don't want these posts anymore? <%= author_subscriber_unsubscribe_url(@post.user.slug, @subscriber_token) %>
