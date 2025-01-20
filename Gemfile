@@ -62,6 +62,9 @@ group :development do
 
   # Live-reloading system for Hotwire applications
   gem "hotwire-spark"
+
+  # Preview email in browser
+  gem "letter_opener_web"
 end
 
 group :test do
