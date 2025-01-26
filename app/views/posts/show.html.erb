@@ -48,6 +48,12 @@
                 </button>
               </li>
               <li>
+                <%= button_tag class: "flex items-center gap-x-2 text-base text-gray-600 font-normal hover:text-gray-900", hidden: true, data: { controller: "web-share", action: "web-share#share", web_share_url_value: request.url, web_share_text_value: "View this post online", web_share_title_value: "Hit this link to read this post online." } do %>
+                  <%= image_tag "share-2.svg", size: 20 %>
+                  Share
+                <% end %>
+              </li>
+              <li>
                 <%= link_to new_reporting_path, class: "block text-base text-gray-600 font-normal hover:text-gray-900" do %>
                   <div class="flex items-center gap-x-2">
                     <%= image_tag "triangle-alert.svg", size: 20 %>
