@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      @user.avatar.purge if params[:remove_avatar] == "true"
       redirect_to edit_user_path, notice: "User was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity

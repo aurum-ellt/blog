@@ -16,14 +16,23 @@
       </div>
     <% end %>
 
-    <div class="my-5">
-      <% if @user.avatar.present? %>
-        <div class="mb-2">
-          <%= image_tag @user.avatar.variant(:small), size: 80, class: "rounded-full object-cover h-20" %>
-        </div>
-      <% end %>
-      <%= form.file_field :avatar, class: "form-control", accept: "image/png,image/jpeg,image/webp" %>
-    </div>
+    <%= tag.div class: "flex items-center gap-4 my-5", data: { controller: "upload-preview", upload_preview_default_image_value: asset_url("default-picture.webp") } do %>
+      <label class="border hover:bg-gray-100 rounded-full cursor-pointer p-2">
+        <%= form.file_field :avatar, accept: "image/png,image/jpeg,image/webp", class: "sr-only", data: { upload_preview_target: "input", action: "upload-preview#previewImage" } %>
+        <%= image_tag "camera.svg", size: 20, aria: { hidden: true } %>
+        <span class="sr-only">Upload avatar</span>
+      </label>
+
+      <div class="relative">
+        <%= image_tag @user.avatar&.variant(:small) || "default-picture.webp", size: 80, alt: "Avatar", class: "border rounded-full object-cover h-20", data: { upload_preview_target: "image" } %>
+
+        <label class="absolute top-0 right-0 border hover:bg-gray-100 rounded-full cursor-pointer p-1" data-action="click->upload-preview#clear">
+          <%= hidden_field_tag "remove_avatar", false, data: { upload_preview_target: "removeInput" } %>
+          <%= image_tag "x-mark.svg", size: 14, aria: { hidden: true } %>
+          <span class="sr-only">Remove avatar</span>
+        </label>
+      </div>
+    <% end %>
 
     <div class="my-5">
       <%= form.label :name, class: "form-label" %>
