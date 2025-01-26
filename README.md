@@ -59,3 +59,7 @@ A modest blogging tool.
     ```bash
     $ bin/rails db:fixtures:load 
     ```
+
+## Icons
+
+This project uses Lucide icons under ISC license.

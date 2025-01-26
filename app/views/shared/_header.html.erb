@@ -3,7 +3,7 @@
     <div class="flex lg:flex-1">
       <%= link_to authenticated? ? author_posts_path(Current.user.slug) : root_path do %>
         <span class="sr-only">Blog</span>
-        <%= image_tag "chat-bubble-bottom-center-text.svg", size: 30, alt: "logo" %>
+        <%= image_tag "message-square-text.svg", size: 30, alt: "logo" %>
       <% end %>
     </div>
     <div class="flex items-center gap-8">
