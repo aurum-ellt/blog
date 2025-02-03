@@ -31,4 +31,9 @@ class UserTest < ActiveSupport::TestCase
     @user.name = "Lorem ipsum odor amet, consectetuer adipiscing elit"
     assert_not @user.save
   end
+
+  test "should not save user without role" do
+    @user.role = nil
+    assert_not @user.save
+  end
 end

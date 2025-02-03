@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Sluggable
 
+  enum :role, %i[ member admin ], default: :member, validate: true
+
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :identities, dependent: :destroy

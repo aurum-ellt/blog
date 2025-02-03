@@ -5,10 +5,11 @@ one:
   password_digest: <%= password_digest %>
   name: <%= author = Faker::Book.author %>
   slug: <%= "#{author.parameterize}-#{SecureRandom.hex(2)}" %>
-  bio: 
+  role: 1
 
 two:
   email_address: two@example.com
   password_digest: <%= password_digest %>
   name: <%= author = Faker::Book.author %>
   slug: <%= "#{author.parameterize}-#{SecureRandom.hex(2)}" %>
+  role: 0
