@@ -42,3 +42,6 @@ pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 
 # Run litestream
 plugin :litestream
+
+activate_control_app
+plugin :yabeda

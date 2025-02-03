@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   mount MissionControl::Jobs::Engine, at: "/jobs"
   mount Litestream::Engine, at: "/litestream"
   mount LetterOpenerWeb::Engine, at: "/mails" if Rails.env.development?
+  mount Yabeda::Prometheus::Exporter, at: "/metrics"
 
   resource :registration, only: %i[ new create ]
   resource :session

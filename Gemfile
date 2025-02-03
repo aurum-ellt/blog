@@ -84,3 +84,8 @@ gem "geared_pagination"
 
 # Standard protocol for authorization
 gem "oauth2"
+
+# Metrics
+gem "yabeda-prometheus"
+gem "yabeda-puma-plugin"
+gem "yabeda-activerecord"
