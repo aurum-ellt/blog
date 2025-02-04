@@ -43,5 +43,7 @@ pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 # Run litestream
 plugin :litestream
 
+# Expose Prometheus metrics on port 9394
 activate_control_app
 plugin :yabeda
+plugin :yabeda_prometheus

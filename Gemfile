@@ -86,6 +86,6 @@ gem "geared_pagination"
 gem "oauth2"
 
 # Metrics
-gem "yabeda-prometheus"
+gem "yabeda-prometheus-mmap"
 gem "yabeda-puma-plugin"
-gem "yabeda-activerecord"
+gem "yabeda-rails"
