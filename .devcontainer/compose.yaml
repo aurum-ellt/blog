@@ -45,5 +45,20 @@ services:
     volumes:
       - minio-data:/data
 
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3001:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+
 volumes:
   minio-data:
+  grafana-data:
