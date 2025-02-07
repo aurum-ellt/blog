@@ -36,6 +36,11 @@ en:
         content_type: "Allowed file format are %{content_types}"
         max_size: "File size should be less than %{max_size}"
 
+  helpers:
+    submit:
+      user:
+        update: "Save changes"
+
   time:
     formats:
       full_date: "%B %d, %Y"
