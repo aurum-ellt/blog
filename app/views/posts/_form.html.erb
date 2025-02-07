@@ -11,17 +11,15 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, autofocus: true, class: "form-control", placeholder: "e.g. Hello world!" %>
+  <div class="my-12">
+    <%= form.text_field :title, autofocus: true, class: "form-control form-control-lg font-bold text-center", placeholder: "e.g. Hello world!" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :body, class: "form-label" %>
-    <%= form.rich_textarea :body , class: "form-control min-h-40", data: { controller: "trix", trix_unused_components_value: [".trix-button--icon-heading-1", ".trix-button-group--file-tools", ".trix-button-group--history-tools"] } %>
+  <div class="my-12">
+    <%= form.rich_textarea :body , class: "form-control min-h-40", data: { controller: "trix", trix_unused_components_value: [".trix-button--icon-heading-1", ".trix-button-group--file-tools", ".trix-button-group--history-tools"] }, placeholder: "..." %>
   </div>
 
-  <div class="inline">
+  <div class="text-center">
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
