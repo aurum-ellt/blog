@@ -42,15 +42,15 @@
     </div>
   <% end %>
 
-  <fieldset class="border border-red-600 rounded-md p-8 mt-24">
-    <legend class="text-red-600">Danger zone</legend>
+  <fieldset class="border-2 border-danger-600 rounded-md p-8 mt-24">
+    <legend class="font-semibold text-xl text-danger-600">Danger zone</legend>
 
     <%= form_with model: @user, method: :delete, class: "contents", data: { controller: "confirmation" } do |form| %>
       <div class="mb-5">
         <label for="confirmation" class="form-label">Type "DELETE" to confirm</label>
-        <input id="confirmation" class="form-control" placeholder="DELETE" data-confirmation-target="input" data-confirmation-content="DELETE" data-action="confirmation#check" />
+        <input id="confirmation" class="form-control font-semibold" placeholder="DELETE" data-confirmation-target="input" data-confirmation-content="DELETE" data-action="confirmation#check" />
       </div>
-      <%= form.submit "Destroy my account", class: "btn btn-primary", disabled: true, data: { confirmation_target: "item" } %>
+      <%= form.submit "Delete your account", class: "btn btn-sm btn-danger", disabled: true, data: { confirmation_target: "item" } %>
     <% end %>
   </fieldset>
 </div>

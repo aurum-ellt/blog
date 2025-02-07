@@ -23,6 +23,8 @@
 }
 
 @theme {
+  --color-danger-600: #bf5250;
+  --color-danger-700: #9c3435;
   --color-paper: #FAF9F6;
   --color-primary-100: #dfe8e6;
   --color-primary-400: #71908b;
@@ -34,7 +36,11 @@
 
 @layer components {
   .btn {
-    @apply inline-block border rounded-full font-medium py-2 px-8 cursor-pointer disabled:cursor-auto;
+    @apply inline-block border rounded-full font-semibold py-2 px-8 cursor-pointer disabled:cursor-auto;
+  }
+
+  .btn-sm {
+    @apply text-sm
   }
 
   .btn-primary {
@@ -45,8 +51,12 @@
     @apply border-primary-400 hover:border-primary-500 active:border-primary-600 text-primary-400 hover:text-primary-500 active:text-primary-600;
   }
 
+  .btn-danger {
+    @apply border-danger-600 hover:border-danger-700 active:border-danger-700 bg-danger-600 hover:bg-danger-700 active:bg-danger-700 text-white disabled:opacity-50
+  }
+
   .form-label {
-    @apply inline-block font-medium text-sm mb-2;
+    @apply inline-block font-medium text-sm text-gray-800 mb-2;
   }
 
   .form-control {
