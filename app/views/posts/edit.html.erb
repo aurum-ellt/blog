@@ -1,9 +1,5 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl text-center">Editing post</h1>
-
   <%= render "form", post: @post %>
-
-  <%= link_to "Show this post", author_post_path(@post.user.slug, @post.slug), class: "btn btn-outline-primary" %>
 
   <fieldset class="border border-red-600 rounded-md p-8 mt-24">
     <legend class="text-red-600">Danger zone</legend>
