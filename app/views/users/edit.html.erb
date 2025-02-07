@@ -1,13 +1,10 @@
 <% content_for(:title) { "Profile" } %>
 
 <div class="mx-auto md:w-2/3 w-full">
-   <h1 class="font-bold text-4xl text-center">Editing user</h1>
-
   <%= form_with model: @user, class: "contents" do |form| %>
     <% if @user.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
         <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
         <ul>
           <% @user.errors.each do |error| %>
             <li><%= error.full_message %></li>
@@ -16,35 +13,31 @@
       </div>
     <% end %>
 
-    <%= tag.div class: "flex items-center gap-4 my-5", data: { controller: "upload-preview", upload_preview_default_image_value: asset_url("default-picture.webp") } do %>
-      <label class="border hover:bg-gray-100 rounded-full cursor-pointer p-2">
-        <%= form.file_field :avatar, accept: "image/png,image/jpeg,image/webp", class: "sr-only", data: { upload_preview_target: "input", action: "upload-preview#previewImage" } %>
-        <%= image_tag "camera.svg", size: 20, aria: { hidden: true } %>
-        <span class="sr-only">Upload avatar</span>
-      </label>
+    <div class= "flex justify-center">
+      <%= tag.div class: "relative", data: { controller: "upload-preview", upload_preview_default_image_value: asset_url("default-picture.webp") } do %>
+        <label class="cursor-pointer hover:opacity-50">
+          <%= form.file_field :avatar, accept: "image/png,image/jpeg,image/webp", class: "sr-only", data: { upload_preview_target: "input", action: "upload-preview#previewImage" } %>
+          <%= image_tag @user.avatar&.variant(:small) || "default-picture.webp", size: 120, alt: "Avatar", class: "border rounded-full object-cover h-30", data: { upload_preview_target: "image" } %>
+          <span class="sr-only">Upload avatar</span>
+        </label>
 
-      <div class="relative">
-        <%= image_tag @user.avatar&.variant(:small) || "default-picture.webp", size: 80, alt: "Avatar", class: "border rounded-full object-cover h-20", data: { upload_preview_target: "image" } %>
-
-        <label class="absolute top-0 right-0 border hover:bg-gray-100 rounded-full cursor-pointer p-1" data-action="click->upload-preview#clear">
+        <label class="absolute bottom-4 right-0 z-10 bg-gray-300 hover:bg-gray-100 border-2 border-paper rounded-full cursor-pointer p-1" data-action="click->upload-preview#clear">
           <%= hidden_field_tag "remove_avatar", false, data: { upload_preview_target: "removeInput" } %>
           <%= image_tag "x-mark.svg", size: 14, aria: { hidden: true } %>
           <span class="sr-only">Remove avatar</span>
         </label>
-      </div>
-    <% end %>
-
-    <div class="my-5">
-      <%= form.label :name, class: "form-label" %>
-      <%= form.text_field :name, autofocus: true, class: "form-control", placeholder: "e.g. Alan Turing" %>
+      <% end %>
     </div>
 
-    <div class="my-5">
-      <%= form.label :bio, class: "form-label" %>
-      <%= form.rich_textarea :bio, class: "form-control min-h-40", placeholder: "e.g. English mathematician, computer scientist, logician, cryptanalyst, philosopher and theoretical biologist.", data: { controller: "trix", trix_unused_components_value: [".trix-button-group--block-tools", ".trix-button-group--file-tools", ".trix-button-group--history-tools"] } %>
+    <div class="my-12">
+      <%= form.text_field :name, autofocus: true, class: "form-control form-control-lg font-bold text-center", placeholder: "e.g. Alan Turing" %>
     </div>
 
-    <div class="inline">
+    <div class="my-12">
+      <%= form.rich_textarea :bio, class: "form-control min-h-80", placeholder: "e.g. English mathematician, computer scientist, logician, cryptanalyst, philosopher and theoretical biologist.", data: { controller: "trix", trix_unused_components_value: [".trix-button-group--block-tools", ".trix-button-group--file-tools", ".trix-button-group--history-tools"] } %>
+    </div>
+
+    <div class="text-center">
       <%= form.submit class: "btn btn-primary" %>
     </div>
   <% end %>
