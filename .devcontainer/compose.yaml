@@ -21,6 +21,11 @@ services:
     - selenium
     - minio
 
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://loki:3100/loki/api/v1/push"
+
     environment:
       - RAILS_ENV=development
       - LITESTREAM_INSTALL_DIR=/usr/local/bin
@@ -52,6 +57,21 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
+  loki:
+      image: grafana/loki
+      ports:
+        - "3100:3100"
+      volumes:
+        - loki-data:/loki
+
+  tempo:
+    image: grafana/tempo
+    ports:
+      - "14268:14268"
+      - "9411:9411"
+    volumes:
+      - tempo-data:/tmp/tempo
+
   grafana:
     image: grafana/grafana
     ports:
@@ -62,3 +82,5 @@ services:
 volumes:
   minio-data:
   grafana-data:
+  loki-data:
+  tempo-data:
