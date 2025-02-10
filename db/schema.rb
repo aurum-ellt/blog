@@ -68,7 +68,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_20_100840) do
     t.datetime "broadcasted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["published_at"], name: "index_posts_on_published_at"
+    t.index ["published_at", "id"], name: "index_posts_on_published_at_and_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

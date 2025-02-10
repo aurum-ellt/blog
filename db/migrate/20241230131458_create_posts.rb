@@ -6,10 +6,12 @@ class CreatePosts < ActiveRecord::Migration[8.0]
       t.string :slug, null: false, index: { unique: true }
       t.references :user, null: false, foreign_key: true
       t.integer :status, null: false
-      t.datetime :published_at, index: true
+      t.datetime :published_at
       t.datetime :broadcasted_at
 
       t.timestamps
     end
+
+    add_index :posts, [ :published_at, :id ]
   end
 end
