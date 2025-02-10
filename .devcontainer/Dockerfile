@@ -7,6 +7,4 @@ ADD https://github.com/benbjohnson/litestream/releases/download/v0.3.13/litestre
 RUN tar -C /usr/local/bin -xzf /tmp/litestream.tar.gz
 
 # Install Watchman
-RUN apt-get update && apt-get install -y \
-    watchman \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y watchman && rm -rf /var/lib/apt/lists/*x
