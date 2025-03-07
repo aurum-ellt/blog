@@ -38,6 +38,9 @@ jobs:
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bin/importmap audit
 
+      - name: Scan for known security vulnerabilities in gems used
+        run: bin/bundler-audit
+
   lint:
     runs-on: ubuntu-latest
     steps:
