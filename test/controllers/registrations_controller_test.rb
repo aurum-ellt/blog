@@ -7,7 +7,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect to root path if user is authenticated" do
-    sign_in users(:one)
+    sign_in_as users(:one)
 
     get new_registration_url
     assert_redirected_to root_path

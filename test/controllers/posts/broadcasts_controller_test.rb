@@ -2,7 +2,7 @@ require "test_helper"
 
 class Posts::BroadcastsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    sign_in users(:one)
+    sign_in_as users(:one)
   end
 
   test "should broadcast post" do
