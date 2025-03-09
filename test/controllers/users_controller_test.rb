@@ -10,7 +10,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get update" do
+  test "should update user" do
     patch user_url, params: { user: { name: "Lorem ipsum", bio: "Lorem ipsum odor amet, consectetuer adipiscing elit." } }
     assert_redirected_to edit_user_url
 
