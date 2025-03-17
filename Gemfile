@@ -92,3 +92,8 @@ gem "oauth2"
 gem "yabeda-prometheus-mmap"
 gem "yabeda-puma-plugin"
 gem "yabeda-rails"
+
+# Observability
+gem "opentelemetry-sdk"
+gem "opentelemetry-exporter-otlp"
+gem "opentelemetry-instrumentation-all"
