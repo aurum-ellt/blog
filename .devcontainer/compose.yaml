@@ -21,11 +21,6 @@ services:
     - selenium
     - minio
 
-    logging:
-      driver: loki
-      options:
-        loki-url: "http://loki:3100/loki/api/v1/push"
-
     environment:
       - RAILS_ENV=development
       - LITESTREAM_INSTALL_DIR=/usr/local/bin
@@ -33,6 +28,8 @@ services:
       - LITESTREAM_REPLICA_ENDPOINT=http://minio:9000
       - LITESTREAM_ACCESS_KEY_ID=minioadmin
       - LITESTREAM_SECRET_ACCESS_KEY=minioadmin
+      - OTEL_LOG_LEVEL=error
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
 
   selenium:
     image: selenium/standalone-chromium
@@ -50,6 +47,15 @@ services:
     volumes:
       - minio-data:/data
 
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+
   prometheus:
     image: prom/prometheus
     ports:
@@ -58,19 +64,18 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
   loki:
-      image: grafana/loki
-      ports:
-        - "3100:3100"
-      volumes:
-        - loki-data:/loki
+    image: grafana/loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki-config.yaml:/etc/loki/local-config.yaml
 
   tempo:
-    image: grafana/tempo
+    image: grafana/tempo:latest
     ports:
-      - "14268:14268"
-      - "9411:9411"
+      - "3200:3200"
     volumes:
-      - tempo-data:/tmp/tempo
+      - ./tempo-config.yaml:/etc/tempo/tempo.yaml
 
   grafana:
     image: grafana/grafana
@@ -82,5 +87,3 @@ services:
 volumes:
   minio-data:
   grafana-data:
-  loki-data:
-  tempo-data:
